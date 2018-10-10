@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-yandexads"
+        version="0.0.1">
+    <name>YandexMetrica</name>
+    <author>Mikhail</author>
+    <description>Yandex metrica</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,yandex,metrica,appmetrica</keywords>
+    <!--repo>https://github.com/floatinghotpot/cordova-admob-pro.git</repo>
+    <issue>https://github.com/floatinghotpot/cordova-admob-pro/issues</issue-->
+    <engines>
+        <engine name="cordova-android" version="&gt;=3.5.0" />
+    </engines>
+    <platform name="android">
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+		<edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
+            <manifest xmlns:tools="http://schemas.android.com/tools"></manifest>
+        </edit-config>
+		<edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
+            <application tools:ignore="GoogleAppIndexingWarning" />
+        </edit-config>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		    <service
+                android:name="com.yandex.metrica.MetricaService"
+                android:enabled="true"
+                android:exported="true"
+                android:process=":Metrica"
+                tools:ignore="ExportedService" >
+                <intent-filter>
+                    <category android:name="android.intent.category.DEFAULT" />
+                    <action android:name="com.yandex.metrica.IMetricaService" />
+                    <data android:scheme="metrica" />
+                </intent-filter>
+
+            <meta-data
+                android:name="metrica:api:level"
+                android:value="64" />
+            </service>
+            <receiver
+                android:name="com.yandex.metrica.MetricaEventHandler"
+                android:enabled="true"
+                android:exported="true"
+                tools:ignore="ExportedReceiver" >
+                <intent-filter>
+                    <action android:name="com.android.vending.INSTALL_REFERRER" />
+                </intent-filter>
+            </receiver>
+		</config-file>
+    </platform>
+</plugin>
