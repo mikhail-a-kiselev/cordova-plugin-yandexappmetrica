@@ -14,7 +14,12 @@
         <engine name="cordova-android" version="&gt;=3.5.0" />
     </engines>
     <platform name="android">
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="YandexAppMetrica">
+                <param name="android-package" value="com.codemech.yandexappmetrica.YandexAppMetrica"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/YandexAppMetrica.java" target-dir="src/com/codemech/yandexappmetrica" />
 		<edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
             <manifest xmlns:tools="http://schemas.android.com/tools"></manifest>
         </edit-config>
