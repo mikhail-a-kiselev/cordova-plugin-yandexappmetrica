@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-yandexads"
+        id="cordova-plugin-yandexappmetrica"
         version="0.0.1">
     <name>YandexMetrica</name>
     <author>Mikhail</author>
@@ -17,6 +17,7 @@
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="YandexAppMetrica">
                 <param name="android-package" value="com.codemech.yandexappmetrica.YandexAppMetrica"/>
+				<param name="onload" value="true" />
             </feature>
         </config-file>
         <source-file src="src/android/YandexAppMetrica.java" target-dir="src/com/codemech/yandexappmetrica" />
